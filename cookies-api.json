@@ -1,0 +1,3839 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Cookies API",
+    "version": "0.1.0",
+    "description": "Cookies&Cream API"
+  },
+  "tags": [
+    {
+      "name": "users",
+      "description": "Users operations"
+    },
+    {
+      "name": "favorites",
+      "description": "Favorites operations"
+    },
+    {
+      "name": "cookies",
+      "description": "Cookies operations"
+    }
+  ],
+  "paths": {
+    "/api/users": {
+      "get": {
+        "operationId": "list-Users",
+        "description": "List \"Users\" resources",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[email]",
+            "required": false,
+            "description": "Equality filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$contains]",
+            "required": false,
+            "description": "String contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$search]",
+            "required": false,
+            "description": "String full-text search filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password]",
+            "required": false,
+            "description": "Equality filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$contains]",
+            "required": false,
+            "description": "String contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$search]",
+            "required": false,
+            "description": "String full-text search filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[favorites]",
+            "required": false,
+            "description": "Equality filter for \"favorites\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsersListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "operationId": "create-Users",
+        "description": "Create a \"Users\" resource",
+        "tags": [
+          "users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsersCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsersResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "operationId": "fetch-Users",
+        "description": "Fetch a \"Users\" resource",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsersResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-Users-put",
+        "description": "Update a \"Users\" resource",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsersUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsersResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-Users-patch",
+        "description": "Update a \"Users\" resource",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsersUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsersResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete-Users",
+        "description": "Delete a \"Users\" resource",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/{id}/favorites": {
+      "get": {
+        "operationId": "fetch-Users-related-favorites",
+        "description": "Fetch the related \"favorites\" resource for \"Users\"",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[email]",
+            "required": false,
+            "description": "Equality filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$contains]",
+            "required": false,
+            "description": "String contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$search]",
+            "required": false,
+            "description": "String full-text search filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password]",
+            "required": false,
+            "description": "Equality filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$contains]",
+            "required": false,
+            "description": "String contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$search]",
+            "required": false,
+            "description": "String full-text search filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[favorites]",
+            "required": false,
+            "description": "Equality filter for \"favorites\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FavoritesListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/users/{id}/relationships/favorites": {
+      "get": {
+        "operationId": "fetch-Users-relationship-favorites",
+        "description": "Fetch the \"favorites\" relationships for a \"Users\"",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[email]",
+            "required": false,
+            "description": "Equality filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$contains]",
+            "required": false,
+            "description": "String contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$search]",
+            "required": false,
+            "description": "String full-text search filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password]",
+            "required": false,
+            "description": "Equality filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$contains]",
+            "required": false,
+            "description": "String contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$search]",
+            "required": false,
+            "description": "String full-text search filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[favorites]",
+            "required": false,
+            "description": "Equality filter for \"favorites\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-Users-relationship-favorites-put",
+        "description": "Update \"favorites\" relationships for a \"Users\"",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-Users-relationship-favorites-patch",
+        "description": "Update \"favorites\" relationships for a \"Users\"",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create-Users-relationship-favorites",
+        "description": "Create new \"favorites\" relationships for a \"Users\"",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/favorites": {
+      "get": {
+        "operationId": "list-Favorites",
+        "description": "List \"Favorites\" resources",
+        "tags": [
+          "favorites"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[user]",
+            "required": false,
+            "description": "Equality filter for \"user\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[cookie]",
+            "required": false,
+            "description": "Equality filter for \"cookie\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FavoritesListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "operationId": "create-Favorites",
+        "description": "Create a \"Favorites\" resource",
+        "tags": [
+          "favorites"
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FavoritesCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FavoritesResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/favorites/{id}": {
+      "get": {
+        "operationId": "fetch-Favorites",
+        "description": "Fetch a \"Favorites\" resource",
+        "tags": [
+          "favorites"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FavoritesResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-Favorites-put",
+        "description": "Update a \"Favorites\" resource",
+        "tags": [
+          "favorites"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FavoritesUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FavoritesResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-Favorites-patch",
+        "description": "Update a \"Favorites\" resource",
+        "tags": [
+          "favorites"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FavoritesUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FavoritesResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete-Favorites",
+        "description": "Delete a \"Favorites\" resource",
+        "tags": [
+          "favorites"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/favorites/{id}/user": {
+      "get": {
+        "operationId": "fetch-Favorites-related-user",
+        "description": "Fetch the related \"user\" resource for \"Favorites\"",
+        "tags": [
+          "favorites"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsersResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/favorites/{id}/relationships/user": {
+      "get": {
+        "operationId": "fetch-Favorites-relationship-user",
+        "description": "Fetch the \"user\" relationships for a \"Favorites\"",
+        "tags": [
+          "favorites"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-Favorites-relationship-user-put",
+        "description": "Update \"user\" relationship for a \"Favorites\"",
+        "tags": [
+          "favorites"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toOneRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-Favorites-relationship-user-patch",
+        "description": "Update \"user\" relationship for a \"Favorites\"",
+        "tags": [
+          "favorites"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toOneRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/favorites/{id}/cookie": {
+      "get": {
+        "operationId": "fetch-Favorites-related-cookie",
+        "description": "Fetch the related \"cookie\" resource for \"Favorites\"",
+        "tags": [
+          "favorites"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CookiesResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/favorites/{id}/relationships/cookie": {
+      "get": {
+        "operationId": "fetch-Favorites-relationship-cookie",
+        "description": "Fetch the \"cookie\" relationships for a \"Favorites\"",
+        "tags": [
+          "favorites"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-Favorites-relationship-cookie-put",
+        "description": "Update \"cookie\" relationship for a \"Favorites\"",
+        "tags": [
+          "favorites"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toOneRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-Favorites-relationship-cookie-patch",
+        "description": "Update \"cookie\" relationship for a \"Favorites\"",
+        "tags": [
+          "favorites"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toOneRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cookies": {
+      "get": {
+        "operationId": "list-Cookies",
+        "description": "List \"Cookies\" resources",
+        "tags": [
+          "cookies"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[name]",
+            "required": false,
+            "description": "Equality filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$contains]",
+            "required": false,
+            "description": "String contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$search]",
+            "required": false,
+            "description": "String full-text search filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[price]",
+            "required": false,
+            "description": "Equality filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[price$lt]",
+            "required": false,
+            "description": "Less-than filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[price$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[price$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[price$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[favorites]",
+            "required": false,
+            "description": "Equality filter for \"favorites\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CookiesListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "operationId": "create-Cookies",
+        "description": "Create a \"Cookies\" resource",
+        "tags": [
+          "cookies"
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookiesCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CookiesResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cookies/{id}": {
+      "get": {
+        "operationId": "fetch-Cookies",
+        "description": "Fetch a \"Cookies\" resource",
+        "tags": [
+          "cookies"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CookiesResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-Cookies-put",
+        "description": "Update a \"Cookies\" resource",
+        "tags": [
+          "cookies"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookiesUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CookiesResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-Cookies-patch",
+        "description": "Update a \"Cookies\" resource",
+        "tags": [
+          "cookies"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CookiesUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CookiesResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete-Cookies",
+        "description": "Delete a \"Cookies\" resource",
+        "tags": [
+          "cookies"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cookies/{id}/favorites": {
+      "get": {
+        "operationId": "fetch-Cookies-related-favorites",
+        "description": "Fetch the related \"favorites\" resource for \"Cookies\"",
+        "tags": [
+          "cookies"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[name]",
+            "required": false,
+            "description": "Equality filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$contains]",
+            "required": false,
+            "description": "String contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$search]",
+            "required": false,
+            "description": "String full-text search filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[price]",
+            "required": false,
+            "description": "Equality filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[price$lt]",
+            "required": false,
+            "description": "Less-than filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[price$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[price$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[price$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[favorites]",
+            "required": false,
+            "description": "Equality filter for \"favorites\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FavoritesListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/cookies/{id}/relationships/favorites": {
+      "get": {
+        "operationId": "fetch-Cookies-relationship-favorites",
+        "description": "Fetch the \"favorites\" relationships for a \"Cookies\"",
+        "tags": [
+          "cookies"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[name]",
+            "required": false,
+            "description": "Equality filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$contains]",
+            "required": false,
+            "description": "String contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$search]",
+            "required": false,
+            "description": "String full-text search filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[price]",
+            "required": false,
+            "description": "Equality filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[price$lt]",
+            "required": false,
+            "description": "Less-than filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[price$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[price$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[price$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"price\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter[favorites]",
+            "required": false,
+            "description": "Equality filter for \"favorites\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-Cookies-relationship-favorites-put",
+        "description": "Update \"favorites\" relationships for a \"Cookies\"",
+        "tags": [
+          "cookies"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-Cookies-relationship-favorites-patch",
+        "description": "Update \"favorites\" relationships for a \"Cookies\"",
+        "tags": [
+          "cookies"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create-Cookies-relationship-favorites",
+        "description": "Create new \"favorites\" relationships for a \"Cookies\"",
+        "tags": [
+          "cookies"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "_jsonapi": {
+        "type": "object",
+        "description": "An object describing the server’s implementation",
+        "required": [
+          "version"
+        ],
+        "properties": {
+          "version": {
+            "type": "string"
+          }
+        }
+      },
+      "_meta": {
+        "type": "object",
+        "description": "Meta information about the request or response",
+        "properties": {
+          "serialization": {
+            "description": "Superjson serialization metadata"
+          }
+        },
+        "additionalProperties": true
+      },
+      "_resourceIdentifier": {
+        "type": "object",
+        "description": "Identifier for a resource",
+        "required": [
+          "type",
+          "id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Resource type"
+          },
+          "id": {
+            "type": "string",
+            "description": "Resource id"
+          }
+        }
+      },
+      "_resource": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_resourceIdentifier"
+          },
+          {
+            "type": "object",
+            "description": "A resource with attributes and relationships",
+            "properties": {
+              "attributes": {
+                "type": "object",
+                "description": "Resource attributes"
+              },
+              "relationships": {
+                "type": "object",
+                "description": "Resource relationships"
+              }
+            }
+          }
+        ]
+      },
+      "_links": {
+        "type": "object",
+        "required": [
+          "self"
+        ],
+        "description": "Links related to the resource",
+        "properties": {
+          "self": {
+            "type": "string",
+            "description": "Link for refetching the curent results"
+          }
+        }
+      },
+      "_pagination": {
+        "type": "object",
+        "description": "Pagination information",
+        "required": [
+          "first",
+          "last",
+          "prev",
+          "next"
+        ],
+        "properties": {
+          "first": {
+            "type": "string",
+            "description": "Link to the first page",
+            "nullable": true
+          },
+          "last": {
+            "type": "string",
+            "description": "Link to the last page",
+            "nullable": true
+          },
+          "prev": {
+            "type": "string",
+            "description": "Link to the previous page",
+            "nullable": true
+          },
+          "next": {
+            "type": "string",
+            "description": "Link to the next page",
+            "nullable": true
+          }
+        }
+      },
+      "_errors": {
+        "type": "array",
+        "description": "An array of error objects",
+        "items": {
+          "type": "object",
+          "required": [
+            "status",
+            "code"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "description": "HTTP status"
+            },
+            "code": {
+              "type": "string",
+              "description": "Error code"
+            },
+            "prismaCode": {
+              "type": "string",
+              "description": "Prisma error code if the error is thrown by Prisma"
+            },
+            "title": {
+              "type": "string",
+              "description": "Error title"
+            },
+            "detail": {
+              "type": "string",
+              "description": "Error detail"
+            },
+            "reason": {
+              "type": "string",
+              "description": "Detailed error reason"
+            },
+            "zodErrors": {
+              "type": "object",
+              "additionalProperties": true,
+              "description": "Zod validation errors if the error is due to data validation failure"
+            }
+          }
+        }
+      },
+      "_errorResponse": {
+        "type": "object",
+        "required": [
+          "errors"
+        ],
+        "description": "An error response",
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/_errors"
+          }
+        }
+      },
+      "_relationLinks": {
+        "type": "object",
+        "required": [
+          "self",
+          "related"
+        ],
+        "description": "Links related to a relationship",
+        "properties": {
+          "self": {
+            "type": "string",
+            "description": "Link for fetching this relationship"
+          },
+          "related": {
+            "type": "string",
+            "description": "Link for fetching the resource represented by this relationship"
+          }
+        }
+      },
+      "_toOneRelationship": {
+        "type": "object",
+        "description": "A to-one relationship",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/_resourceIdentifier",
+            "nullable": true
+          }
+        }
+      },
+      "_toOneRelationshipWithLinks": {
+        "type": "object",
+        "required": [
+          "links",
+          "data"
+        ],
+        "description": "A to-one relationship with links",
+        "properties": {
+          "links": {
+            "$ref": "#/components/schemas/_relationLinks"
+          },
+          "data": {
+            "$ref": "#/components/schemas/_resourceIdentifier",
+            "nullable": true
+          }
+        }
+      },
+      "_toManyRelationship": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "description": "A to-many relationship",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resourceIdentifier"
+            }
+          }
+        }
+      },
+      "_toManyRelationshipWithLinks": {
+        "type": "object",
+        "required": [
+          "links",
+          "data"
+        ],
+        "description": "A to-many relationship with links",
+        "properties": {
+          "links": {
+            "$ref": "#/components/schemas/_pagedRelationLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resourceIdentifier"
+            }
+          }
+        }
+      },
+      "_pagedRelationLinks": {
+        "description": "Relationship links with pagination information",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_pagination"
+          },
+          {
+            "$ref": "#/components/schemas/_relationLinks"
+          }
+        ]
+      },
+      "_toManyRelationshipRequest": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "description": "Input for manipulating a to-many relationship",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resourceIdentifier"
+            }
+          }
+        }
+      },
+      "_toOneRelationshipRequest": {
+        "description": "Input for manipulating a to-one relationship",
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/_resourceIdentifier"
+          }
+        },
+        "nullable": true
+      },
+      "_toManyRelationshipResponse": {
+        "description": "Response for a to-many relationship",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_toManyRelationshipWithLinks"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "jsonapi": {
+                "$ref": "#/components/schemas/_jsonapi"
+              }
+            }
+          }
+        ]
+      },
+      "_toOneRelationshipResponse": {
+        "description": "Response for a to-one relationship",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_toOneRelationshipWithLinks"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "jsonapi": {
+                "$ref": "#/components/schemas/_jsonapi"
+              }
+            }
+          }
+        ]
+      },
+      "Users": {
+        "type": "object",
+        "description": "The \"Users\" model",
+        "required": [
+          "id",
+          "type",
+          "attributes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              }
+            }
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {
+              "favorites": {
+                "$ref": "#/components/schemas/_toManyRelationshipWithLinks"
+              }
+            }
+          }
+        }
+      },
+      "UsersCreateRequest": {
+        "type": "object",
+        "description": "Input for creating a \"Users\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Users\" model",
+            "required": [
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "favorites": {
+                    "$ref": "#/components/schemas/_toManyRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "UsersUpdateRequest": {
+        "type": "object",
+        "description": "Input for updating a \"Users\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Users\" model",
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "favorites": {
+                    "$ref": "#/components/schemas/_toManyRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "UsersResponse": {
+        "type": "object",
+        "description": "Response for a \"Users\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Users"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "relationships": {
+                    "type": "object",
+                    "properties": {
+                      "favorites": {
+                        "$ref": "#/components/schemas/_toManyRelationship"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/_links"
+          }
+        }
+      },
+      "UsersListResponse": {
+        "type": "object",
+        "description": "Response for a list of \"Users\"",
+        "required": [
+          "data",
+          "links"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Users"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "favorites": {
+                          "$ref": "#/components/schemas/_toManyRelationship"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_links"
+              },
+              {
+                "$ref": "#/components/schemas/_pagination"
+              }
+            ]
+          }
+        }
+      },
+      "Favorites": {
+        "type": "object",
+        "description": "The \"Favorites\" model",
+        "required": [
+          "id",
+          "type",
+          "attributes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "user_id": {
+                "type": "integer"
+              },
+              "cookie_id": {
+                "type": "integer"
+              }
+            }
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {
+              "user": {
+                "$ref": "#/components/schemas/_toOneRelationshipWithLinks"
+              },
+              "cookie": {
+                "$ref": "#/components/schemas/_toOneRelationshipWithLinks"
+              }
+            }
+          }
+        }
+      },
+      "FavoritesCreateRequest": {
+        "type": "object",
+        "description": "Input for creating a \"Favorites\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Favorites\" model",
+            "required": [
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "required": [
+                  "user_id"
+                ],
+                "properties": {
+                  "user_id": {
+                    "type": "integer"
+                  },
+                  "cookie_id": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "$ref": "#/components/schemas/_toOneRelationship"
+                  },
+                  "cookie": {
+                    "$ref": "#/components/schemas/_toOneRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "FavoritesUpdateRequest": {
+        "type": "object",
+        "description": "Input for updating a \"Favorites\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Favorites\" model",
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "integer"
+                  },
+                  "cookie_id": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "$ref": "#/components/schemas/_toOneRelationship"
+                  },
+                  "cookie": {
+                    "$ref": "#/components/schemas/_toOneRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "FavoritesResponse": {
+        "type": "object",
+        "description": "Response for a \"Favorites\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Favorites"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "relationships": {
+                    "type": "object",
+                    "properties": {
+                      "user": {
+                        "$ref": "#/components/schemas/_toOneRelationship"
+                      },
+                      "cookie": {
+                        "$ref": "#/components/schemas/_toOneRelationship"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/_links"
+          }
+        }
+      },
+      "FavoritesListResponse": {
+        "type": "object",
+        "description": "Response for a list of \"Favorites\"",
+        "required": [
+          "data",
+          "links"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Favorites"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "user": {
+                          "$ref": "#/components/schemas/_toOneRelationship"
+                        },
+                        "cookie": {
+                          "$ref": "#/components/schemas/_toOneRelationship"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_links"
+              },
+              {
+                "$ref": "#/components/schemas/_pagination"
+              }
+            ]
+          }
+        }
+      },
+      "Cookies": {
+        "type": "object",
+        "description": "The \"Cookies\" model",
+        "required": [
+          "id",
+          "type",
+          "attributes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "price": {
+                "type": "integer"
+              }
+            }
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {
+              "favorites": {
+                "$ref": "#/components/schemas/_toManyRelationshipWithLinks"
+              }
+            }
+          }
+        }
+      },
+      "CookiesCreateRequest": {
+        "type": "object",
+        "description": "Input for creating a \"Cookies\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Cookies\" model",
+            "required": [
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "price"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "favorites": {
+                    "$ref": "#/components/schemas/_toManyRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "CookiesUpdateRequest": {
+        "type": "object",
+        "description": "Input for updating a \"Cookies\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Cookies\" model",
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "favorites": {
+                    "$ref": "#/components/schemas/_toManyRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "CookiesResponse": {
+        "type": "object",
+        "description": "Response for a \"Cookies\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Cookies"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "relationships": {
+                    "type": "object",
+                    "properties": {
+                      "favorites": {
+                        "$ref": "#/components/schemas/_toManyRelationship"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/_links"
+          }
+        }
+      },
+      "CookiesListResponse": {
+        "type": "object",
+        "description": "Response for a list of \"Cookies\"",
+        "required": [
+          "data",
+          "links"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Cookies"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "favorites": {
+                          "$ref": "#/components/schemas/_toManyRelationship"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_links"
+              },
+              {
+                "$ref": "#/components/schemas/_pagination"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "parameters": {
+      "id": {
+        "name": "id",
+        "in": "path",
+        "description": "The resource id",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "include": {
+        "name": "include",
+        "in": "query",
+        "description": "Relationships to include",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "sort": {
+        "name": "sort",
+        "in": "query",
+        "description": "Fields to sort by",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "page-offset": {
+        "name": "page[offset]",
+        "in": "query",
+        "description": "Offset for pagination",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "page-limit": {
+        "name": "page[limit]",
+        "in": "query",
+        "description": "Limit for pagination",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "securitySchemes": {
+      "myBearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "myBearer": []
+    }
+  ]
+}

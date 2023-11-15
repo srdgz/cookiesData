@@ -1,0 +1,54 @@
+datasource db {
+    provider = "postgresql"
+    url = env("POSTGRES_PRISMA_URL")
+    directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Users {
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  password String   @password @omit
+  favorites Favorites[]
+      // everybody can signup
+    @@allow('create', true)
+
+    // user profile is publicly readable
+    @@allow('read', true)
+}
+
+model Favorites {
+  id       Int      @id @default(autoincrement())
+  user_id  Int
+  cookie_id Int?
+  user     Users    @relation(fields: [user_id], references: [id])
+  cookie   Cookies? @relation(fields: [cookie_id], references: [id])
+
+  @@allow('read', true)
+}
+
+model Cookies {
+  id    Int     @id @default(autoincrement())
+  name  String  @unique
+  price Int
+  favorites Favorites[]
+
+  @@allow('read', true)
+}
+
+plugin openapi {
+    provider = '@zenstackhq/openapi'
+    prefix = '/api'
+    flavor = 'rest'
+    title = 'Cookies API'
+    specVersion = '3.0.0'
+    version = '0.1.0'
+    description = 'Cookies&Cream API'
+    output = 'cookies-api.json'
+    securitySchemes = { 
+        myBearer: { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }
+    }
+}

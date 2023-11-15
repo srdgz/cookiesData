@@ -54,11 +54,12 @@ app.post("/api/login", async (req, res) => {
   const user = await prisma.users.findFirst({
     where: { email },
   });
+
   if (!user || !compareSync(password, user.password)) {
     res.status(401).json({ error: "Invalid credentials" });
   } else {
     const token = jwt.sign({ sub: user.id }, process.env.JWT_SECRET! as string);
-    res.json({ id: user.id, email: user.email, token });
+    res.json({ user_id: user.id, email: user.email, token });
   }
 });
 
@@ -84,7 +85,7 @@ app.post("/api/signup", async (req, res) => {
       { sub: newUser.id },
       process.env.JWT_SECRET as string
     );
-    res.json({ id: newUser.id, email: newUser.email, token });
+    res.json({ user_id: newUser.id, email: newUser.email, token });
   } catch (error) {
     console.error("Error during signup:", error);
     res.status(500).json({ error: "Internal Server Error" });

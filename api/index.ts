@@ -17,6 +17,7 @@ app.use(express.json());
 const prisma = new PrismaClient();
 const apiHandler = RestApiHandler({ endpoint: "http://localhost:3000/api" });
 const bcrypt = require("bcrypt");
+const cors = require("cors");
 const options = {
   customCssUrl:
     "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.18.3/swagger-ui.css",
@@ -25,6 +26,14 @@ const spec = JSON.parse(
   fs.readFileSync(path.join(__dirname, "../cookies-api.json"), "utf8")
 );
 app.use("/api/docs", swaggerUI.serve, swaggerUI.setup(spec, options));
+
+app.use(
+  cors({
+    origin: "https://reimagined-barnacle-9px4vv77v7639x5x-5173.app.github.dev",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
 
 function getUser(req: Request) {
   const token = req.headers.authorization?.split(" ")[1];

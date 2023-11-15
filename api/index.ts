@@ -48,7 +48,7 @@ app.post("/api/login", async (req, res) => {
   if (!user || !compareSync(password, user.password)) {
     res.status(401).json({ error: "Invalid credentials" });
   } else {
-    const token = jwt.sign({ sub: user.id }, process.env.JWT_SECRET!);
+    const token = jwt.sign({ sub: user.id }, process.env.JWT_SECRET! as string);
     res.json({ id: user.id, email: user.email, token });
   }
 });
@@ -71,7 +71,10 @@ app.post("/api/signup", async (req, res) => {
         password: hashedPassword,
       },
     });
-    const token = jwt.sign({ sub: newUser.id }, process.env.JWT_SECRET);
+    const token = jwt.sign(
+      { sub: newUser.id },
+      process.env.JWT_SECRET as string
+    );
     res.json({ id: newUser.id, email: newUser.email, token });
   } catch (error) {
     console.error("Error during signup:", error);

@@ -29,7 +29,7 @@ app.use("/api/docs", swaggerUI.serve, swaggerUI.setup(spec, options));
 
 app.use(
   cors({
-    origin: "https://reimagined-barnacle-9px4vv77v7639x5x-5173.app.github.dev",
+    origin: "https://cookies-front-pied.vercel.app",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
